@@ -1,0 +1,26 @@
+GET http://localhost:3000/data
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImprIiwiaWF0IjoxNzM0NjgzMzU1LCJleHAiOjE3MzQ2ODY5NTV9.0EbspJPFFTKoKgGLR5scWkTe0p6YjH4uTQR7hNIoENY
+###
+GET http://localhost:3000/data/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImprIiwiaWF0IjoxNzM0NjgzMzU1LCJleHAiOjE3MzQ2ODY5NTV9.0EbspJPFFTKoKgGLR5scWkTe0p6YjH4uTQR7hNIoENY
+###
+POST http://localhost:3000/data
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImprIiwiaWF0IjoxNzM0NjgzMzU1LCJleHAiOjE3MzQ2ODY5NTV9.0EbspJPFFTKoKgGLR5scWkTe0p6YjH4uTQR7hNIoENY
+
+{
+    "id": "4",
+    "Firstname": "New",
+    "Surname": "User",
+    "userid": "jk"
+}
+###
+GET http://localhost:3000/doc
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "jk",
+    "password": "sala"
+}
