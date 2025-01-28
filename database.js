@@ -45,9 +45,9 @@ FROM users AS a JOIN data AS b ON a.username = b.userid
 GROUP BY a.username`);
 */
 
-const inserRows = async (numRows) => {
-	const res = sendQuery(`call insertNewRows(?)`), false, numRows; 
-	return res[0]
+const insertNewRows = async (numRows) => {
+	const res = sendQuery(`call insertNewRows(?)`), false, numRows;
+        return res[0]; 
 }
 
 /*
@@ -58,7 +58,7 @@ const deleteData = (id, userid) =>
     sendQuery(`DELETE FROM data WHERE id = ? AND userid = ?`, true, id, userid);
 */
 export {
-    numRows
+    insertNewRows
     addOneUser,
     getAllUsers,
     findOneUser,
