@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import {logonUsers, findOneUser} from '../database.js'
 let router = Router()
 
+console.log("here");
 router.post('/', async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;

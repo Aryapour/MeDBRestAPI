@@ -21,7 +21,7 @@ security:
 
 servers:
   - url: http://localhost:3000
-  - url: https://mehdiu2306846.westeurope.cloudapp.azure.com 
+  https://mehdiu2306846.westeurope.cloudapp.azure.com
   
 tags:
   - name: Sample dataset
@@ -59,7 +59,10 @@ components:
           format: int64
           examples:
             - 111
-        forename:
+  mehdi@mehdiu2306846:~/MeDBRestAPI$ sudo nano api.yaml
+mehdi@mehdiu2306846:~/MeDBRestAPI$ cd openapi
+mehdi@mehdiu2306846:~/MeDBRestAPI/openapi$ sudo nano api.yaml
+      forename:
           type: string
           examples:
             - Roy
