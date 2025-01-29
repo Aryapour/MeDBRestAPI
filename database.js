@@ -38,13 +38,6 @@ const addOneUser = async (username, password) =>
 const addData = ({id, Firstname, Surname, userid}) =>
     sendQuery(`INSERT INTO data (id, Firstname, Surname, userid) VALUES (?, ?, ?, ?)`, true, id, Firstname, Surname, userid);
 
-/*
-const getUsersRecords = async () =>
-sendQuery(`SELECT a.username, count(b.userid) AS 'Users records'
-FROM users AS a JOIN data AS b ON a.username = b.userid
-GROUP BY a.username`);
-*/
-
 const insertNewRows = async (numRows) => {
 	const res = sendQuery(`call insertNewRows(?)`), false, numRows;
         return res[0]; 
