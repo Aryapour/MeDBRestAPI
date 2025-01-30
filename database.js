@@ -52,7 +52,7 @@ const deleteData = (id, userid) =>
 */
 
 export {
-    insertNewRows
+    insertNewRows,
     addOneUser,
     getAllUsers,
     findOneUser,
