@@ -38,10 +38,10 @@ const addOneUser = async (username, password) =>
 const addData = ({id, Firstname, Surname, userid}) =>
     sendQuery(`INSERT INTO data (id, Firstname, Surname, userid) VALUES (?, ?, ?, ?)`, true, id, Firstname, Surname, userid);
 
-const insertNewRows = async (numRows) => {
-	const res = sendQuery(`call insertNewRows(?)`), false, numRows;
-        return res[0]; 
-}
+const insertNewRows = async (numRows) => 
+    sendQuery('CALL insertNewRows(?)', numRows);
+
+
 
 /*
 const getUserByName = (username) => 
@@ -50,6 +50,7 @@ const getUserByName = (username) =>
 const deleteData = (id, userid) =>
     sendQuery(`DELETE FROM data WHERE id = ? AND userid = ?`, true, id, userid);
 */
+
 export {
     insertNewRows
     addOneUser,

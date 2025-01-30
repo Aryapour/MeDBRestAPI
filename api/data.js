@@ -6,10 +6,6 @@ router.get('/', async (req, res) => {
     res.json( await getAllData() )
 })
 
-router.get('/user_records', async (req, res) => {
-    res.json( await getUsersRecors() )
-}
-
 router.get('/:id', async (req, res) => {
     res.json( await getDataById(req.params.id) )
 })
