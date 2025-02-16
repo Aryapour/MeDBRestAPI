@@ -1,9 +1,10 @@
-import { createPool } from "mariadb"
+//import { createPool } from "mariadb"
+import { createPool } from "mongodb"
 
 const pool = createPool({
     host: "localhost",
     user: "mta",
-    port: 3306,
+    port: 27017,
     password: "mta1",
     database: "mehdi",
     insertIdAsNumber: true,
