@@ -32,4 +32,13 @@ router.post('/', async (req, res) => {
         res.status(500).json({"error": "unknown database error"})
 })
 
+router.get('/', async (req, res) => {
+    const result = await getUsersRecords();
+    if (result && !result.error) {
+        res.json(result);
+    } else {
+        res.status(500).json({ "error": "unknown database error" });
+    }
+});
+
 export default router;

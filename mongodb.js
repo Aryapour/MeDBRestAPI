@@ -40,7 +40,6 @@ const sendQuery = async (query, toArray = false) => {
 }
 
 const findOneUser = async (username) => {
-    console.log(username);
     const usersCol = await connDbCollection(usersCollection);
     return sendQuery(usersCol.aggregate([
         { $match: { username } },
@@ -52,23 +51,34 @@ const findOneUser = async (username) => {
     ]), true);
 };
 
-const getAllData = async () => 
-    sendQuery(`SELECT * FROM data`);
+const getUsersRecords= async () => {
+    const db = await openDbConn(); 
+    const usersCol = db.collection(usersCollection);
+    return usersCol.aggregate([
+        {
+            $lookup: {
+                from: dataCollection, 
+                localField: "username", 
+                foreignField: "userid", 
+                as: "userRecords" 
+            }
+        },
+        {
+            $group: {
+                _id: "$username",
+                usersRecordsCount: { $sum: { $size: "$userRecords" } } 
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                username: 1,
+                "Users records": { $size: "$userRecords" } 
+            }
+        }
+    ]).toArray();
+};
 
-const getDataById = async (id) =>
-    sendQuery(`SELECT * FROM data WHERE data.id = ?`, false, id);
-
-const getAllUsers = async () => 
-    sendQuery(`SELECT * FROM users`);
-
-const addOneUser = async (username, password) => 
-    sendQuery( `INSERT INTO users (username, password) VALUES (?, ?)`, false, username, password);
-
-const addData = ({id, Firstname, Surname, userid}) =>
-    sendQuery(`INSERT INTO data (id, Firstname, Surname, userid) VALUES (?, ?, ?, ?)`, true, id, Firstname, Surname, userid);
-
-const insertNewRows = async (numRows) =>
-    sendQuery('CALL insertNewRows(?)', numRows);
 
 /* some code here */
 
@@ -88,12 +98,6 @@ process.on("SIGINT", closeDbConnection)
 process.on("SIGNTERM", closeDbConnection)
 
 export {
-    insertNewRows,
-    addOneUser,
-    getAllUsers,
     findOneUser,
-    getAllData,
-    getDataById,
-    addData,
-    logonUsers
+    getUsersRecords
 }
