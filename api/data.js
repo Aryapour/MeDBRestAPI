@@ -1,6 +1,6 @@
 import { Router } from 'express';
 //import {getAllData, getDataById, addData, insertNewRows} from '../database.js'
-import {getAllData, getDataById, addData, insertNewRows,findOneUser} from '../mongodb.js'
+import {getAllData, getDataById, addData, insertNewRows,findOneUser,getUsersRecords} from '../mongodb.js'
 let router = Router()
 
 router.get('/', async (req, res) => {
